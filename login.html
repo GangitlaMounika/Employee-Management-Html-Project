@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 align="center"><b>EMPLOYEE MANAGEMENT SYSTEM</b></h2>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration</a>
+        <a href="login.html">Login</a>
+        <a href="contactus.html">Contact</a>
+        <a href="https://newerp.kluniversity.in/" target="_blank">Erp</a>
+        <a href="https://lms.kluniversity.in/login/index.php" target="_blank">LMS</a>
+        <a href="https://academics.klef.in/" target="_blank">Academic Portal</a>
+    </nav>
+
+    <h3 align="center">Login</h3>
+    <form align="center" onsubmit="login(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function login(event) {
+            event.preventDefault();
+
+            const usernameInput = document.getElementById("username").value;
+            const passwordInput = document.getElementById("password").value;
+
+            const storedUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+            if (!storedUser) {
+                alert("No user registered. Please register first.");
+                return;
+            }
+
+            if (usernameInput === storedUser.username && passwordInput === storedUser.password) {
+                alert("Login successful!");
+                window.location.href = "index.html";
+            } else {
+                alert("Invalid username or password!");
+            }
+        }
+    </script>
+</body>
+</html>

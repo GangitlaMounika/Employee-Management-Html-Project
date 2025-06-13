@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 align="center"><b>EMPLOYEE MANAGEMENT SYSTEM</b></h2>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="registration.html">Registration</a>
+        <a href="login.html">Login</a>
+        <a href="contactus.html">Contact</a>
+        <a href="https://newerp.kluniversity.in/" target="_blank">Erp</a>
+        <a href="https://lms.kluniversity.in/login/index.php" target="_blank">LMS</a>
+        <a href="https://academics.klef.in/" target="_blank">Academic Portal</a>
+    </nav>
+
+    <h3 align="center"><u>EMPLOYEE REGISTRATION</u></h3>
+    <form align="center" onsubmit="handleForm(event)">
+        <label for="id">Enter ID</label>
+        <input type="number" id="id" name="id" required><br><br>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="gender">Gender</label>
+        <input type="radio" name="gender" value="MALE" required>Male
+        <input type="radio" name="gender" value="FEMALE" required>Female
+        <input type="radio" name="gender" value="OTHERS" required>Others
+        <br><br>
+
+        <label for="number">Contact Number</label>
+        <input type="text" id="number" name="number" pattern="[6-9][0-9]{9}" required><br><br>
+
+        <label for="email">Enter Email</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Register</button>
+        <button type="reset">Clear</button>
+    </form>
+
+    <script>
+        function handleForm(event) {
+            event.preventDefault();
+
+            const id = document.getElementById("id").value;
+            const username = document.getElementById("username").value;
+            const number = document.getElementById("number").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const userData = {
+                id,
+                username,
+                number,
+                email,
+                password
+            };
+
+            localStorage.setItem("registeredUser", JSON.stringify(userData));
+            alert("Registration successful!");
+            window.location.href = "login.html";
+        }
+    </script>
+</body>
+</html>
